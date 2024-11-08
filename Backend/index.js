@@ -26,6 +26,15 @@ app.post('/signup', async (req, res) => {
     res.status(201).json(inserted);
 })
 
+app.get('/users', async (req, res) => {
+    try {
+        const users = await collection.find({}).toArray(); // Get all documents as an array
+        res.status(200).json(users);
+    } catch (error) {
+        console.error('Error fetching users:', error);
+        res.status(500).json({ message: 'Failed to retrieve users' });
+    }
+});
 
 app.listen(PORT, () =>{
     console.log(`Server is running on http://localhost:${PORT}`);

@@ -19,4 +19,8 @@ export class UserService {
   signin(user: any): Observable<any>{
     return this.http.post<any>(`${this.apiUrl}/signin`, user);
   }
+
+  getUsers(): Observable<any>{
+    return this.http.get<any>(`${this.apiUrl}/users`);
+  }
 }
