@@ -41,7 +41,7 @@ export class SigninComponent {
       this.UserService.signin({email, password}).subscribe({
         next: (res) =>{
           console.log(res);
-          this.openSnackBar(res.error.message);
+          this.openSnackBar(res.message);
           this.router.navigate(['/dashboard']);
         },
         error: (err) => {
@@ -49,7 +49,8 @@ export class SigninComponent {
           this.openSnackBar(err.error.message);
         },
         complete: () => {
-          console.log("Login Complete")          
+          console.log("Login Complete")    
+          this.router.navigate(['/dashboard']);      
         },
       });
     } else {
